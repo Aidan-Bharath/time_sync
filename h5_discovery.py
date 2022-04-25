@@ -26,8 +26,6 @@ def main(*args,**kwds):
 
     dfiles = args[0]
 
-    start, stop = 0,1000000
-
     for df in dfiles:
         with h5.File(df,'r') as hdf:
             if 'ADV' in df:
@@ -56,9 +54,9 @@ if __name__ == "__main__":
 
     args = [dfiles]
     kwds = {
-        'window':0.01,
-        'shift':50,
-        'plot':False
+        'window':0.01, # window for auto correlation (days)
+        'shift':50, # how many mod timesteps to shift for correlation 
+        'plot':False # iterative plotting (might be a lot of them
     }
 
     main(*args,**kwds)
